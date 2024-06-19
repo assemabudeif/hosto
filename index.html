@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 2</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"></script>
+    <style>
+        .carousel-indicators [data-bs-target] {
+            border-radius: 50%;
+            width: 1.2vw;
+            height: 1.2vw;
+        }
+
+        .carousel .carousel-indicators button {
+            background-color: #414141;
+        }
+
+        .carousel .carousel-indicators button.active {
+            background-color: #3CC7BE;
+
+        }
+
+        body {
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+        .nav-item>.active {
+            color: #3CC7BE !important;
+            border-top: #3CC7BE 3.5px solid;
+        }
+
+        .navbar {
+            padding-top: 0;
+        }
+
+
+        .card {
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: none;
+
+        }
+
+        .list-group-item {
+            border: none;
+        }
+
+        main {
+            margin-bottom: 5vh;
+        }
+
+        .image-container {
+            position: relative;
+            height: 20vh;
+        }
+
+        .image-container img {
+            position: absolute;
+            display: flex;
+            width: 80%;
+            margin: auto;
+            margin-top: 25%;
+            vertical-align: middle;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-container img.first {
+            opacity: 1;
+        }
+
+        .image-container img.second {
+            opacity: 0;
+        }
+
+        .image-container:hover img.first {
+            opacity: 0;
+        }
+
+        .image-container:hover img.second {
+            opacity: 1;
+        }
+
+        .images>* {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+
+        .badge {
+            background-color: #07A7A1;
+            color: white !important;
+        }
+
+        footer h5 {
+            color: #737373;
+            margin-bottom: 25px;
+        }
+
+        footer a,
+        footer span {
+            color: #BBBCBC !important;
+        }
+
+        footer .list-group-item {
+            background-color: transparent !important;
+            padding: 0;
+        }
+
+        footer {
+            background-color: #2D3032;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Nav Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="./images/logo.png" alt="Logo" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto ">
+                    <li class="nav-item ">
+                        <a class="nav-link active px-4 py-3" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-4 py-3" href="#">Layouts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-4 py-3" href="#">Elements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-4 py-3" href="#">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-4 py-3" href="#">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-4 py-3" href="#">Contact us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Slider -->
+
+    <div id="slider" class="carousel carousel-dark slide mb-5" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#slider" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#slider" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#slider" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./images/slider.png" class="d-block w-100" alt="Slider 1">
+            </div>
+            <div class="carousel-item">
+                <img src="./images/slider.png" class="d-block w-100" alt="Slider 2">
+            </div>
+            <div class="carousel-item">
+                <img src="./images/slider.png" class="d-block w-100" alt="Slider 3">
+            </div>
+        </div>
+        <button class="carousel-control-prev d-none" type="button" data-bs-target="#slider" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next d-none" type="button" data-bs-target="#slider" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- Features -->
+    <main class="ms-5 me-4">
+        <div class="row container-fluid">
+            <div class="col-lg-4 col-md-6 col-sm-12 px-0">
+                <div class="card rounded-0 p-4" style="background-color: #07ACA0;">
+                    <i class="fa-regular fa-thumbs-up fa-3x rounded-circle p-4 text-light"
+                        style="background-color: #1FB4A9;"></i>
+                    <p class="text-light h6">Mobile</p>
+                    <p class="text-light h2 fw-bold">Secure &amp; Relible</p>
+                    <p class="text-light h6">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Blanditiis officia iste similique, magnam quod, sapiente veritatis laborum at fugit labore
+                        aperiam eaque, quisquam illo! Fugit a molestiae vitae eius molestias?
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 px-0">
+                <div class="card rounded-0 p-4" style="background-color: #17BCB0;">
+                    <i class="fa-solid fa-rocket fa-3x rounded-circle p-4 text-light"
+                        style="background-color: #2EC3B8;"></i>
+                    <p class="text-light h6">Mobile</p>
+                    <p class="text-light h2 fw-bold">Quick &amp; Super Fast</p>
+                    <p class="text-light h6">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Blanditiis officia iste similique, magnam quod, sapiente veritatis laborum at fugit labore
+                        aperiam eaque, quisquam illo! Fugit a molestiae vitae eius molestias?
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 px-0">
+                <div class="card rounded-0 p-4" style="background-color: #27CCC0;">
+                    <i class="fa-solid fa-comments fa-3x rounded-circle p-4 text-light"
+                        style="background-color: #3CD1C6;"></i>
+                    <p class="text-light h6">Mobile</p>
+                    <p class="text-light h2 fw-bold">Customer Support</p>
+                    <p class="text-light h6">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Blanditiis officia iste similique, magnam quod, sapiente veritatis laborum at fugit labore
+                        aperiam eaque, quisquam illo! Fugit a molestiae vitae eius molestias?
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Hosting Plans -->
+    <section class="p-5 text-center" style="background-color: #FAFAFA;">
+        <h2 class="fw-bold display-5">
+            <span style="color: #3E5161;">Hesto</span>
+            <span style="color: #27CCC0;">Plans</span>
+            <span style="color: #3E5161;">&amp;</span>
+            <span style="color: #27CCC0;">Pricing</span>
+        </h2>
+        <p class="fs-6" style="color: #ACACAC;">Our Hosting plans in details. choose the right plan for you!</p>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <h2 class="h6 text-light py-3 rounded-top fw-bold my-0" style="background-color: #07ACA0;">
+                    Web Hosting
+                </h2>
+                <div class="py-4 my-0" style="background-color: #F3F3F3;">
+                    <p style="color: #3E5161;">
+                        <sup class="fs-2 fw-bold">$</sup>
+                        <span class="display-1 fw-bold">4</span>
+                        <span class="d-inline-flex flex-column text-start">
+                            <sup class="fs-2 fw-bold ">.45</sup>
+                            <sub class="h6 fw-bold">/month</sub>
+                        </span>
+                    </p>
+                </div>
+                <div class="bg-light">
+                    <ul class="list-group text-start">
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-check fs-6" style="color: #90CB31;"></i>
+                            <span class="fw-bold fs-5" style="color: #666666;">10GB </span>
+                            <span class="fw-light fs-5" style="color: #696969;">Storage Space </span>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-check fs-6" style="color: #90CB31;"></i>
+                            <span class="fw-bold fs-5" style="color: #666666;">15GB </span>
+                            <span class="fw-light fs-5" style="color: #696969;">Bandwidth </span>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-check fs-6" style="color: #90CB31;"></i>
+                            <span class="fw-bold fs-5" style="color: #666666;">Unlimeited </span>
+                            <span class="fw-light fs-5" style="color: #696969;">FTP &amp; Email </span>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-check fs-6" style="color: #90CB31;"></i>
+                            <span class="fw-bold fs-5" style="color: #666666;">Free </span>
+                            <span class="fw-light fs-5" style="color: #696969;">Domain</span>
+                        </li>
+                    </ul>
+                </div>
+                <button class="btn text-light w-100 rounded-top py-3 fw-bold fs-5 mb-5"
+                    style="background-color: #07ACA0;">Sign Up
+                    Now</button>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <h2 class="h6 text-light py-3 rounded-top fw-bold my-0" style="background-color: #07ACA0;">
+                    Reseller Hosting
+                </h2>
+                <div class="py-4 my-0" style="background-color: #F3F3F3;">
+                    <p style="color: #3E5161;">
+                        <sup class="fs-2 fw-bold">$</sup>
+                        <span class="display-1 fw-bold">9</span>
+                        <span class="d-inline-flex flex-column text-start">
+                            <sup class="fs-2 fw-bold ">.45</sup>
+                            <sub class="h6 fw-bold">/month</sub>
+                        </span>
+                    </p>
+                </div>
+                <div class="bg-light">
+                    <ul class="list-group text-start">
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-check fs-6" style="color: #90CB31;"></i>
+                            <span class="fw-bold fs-5" style="color: #666666;">10GB </span>
+                            <span class="fw-light fs-5" style="color: #696969;">Storage Space </span>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-check fs-6" style="color: #90CB31;"></i>
+                            <span class="fw-bold fs-5" style="color: #666666;">15GB </span>
+                            <span class="fw-light fs-5" style="color: #696969;">Bandwidth </span>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-check fs-6" style="color: #90CB31;"></i>
+                            <span class="fw-bold fs-5" style="color: #666666;">Unlimeited </span>
+                            <span class="fw-light fs-5" style="color: #696969;">FTP &amp; Email </span>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-check fs-6" style="color: #90CB31;"></i>
+                            <span class="fw-bold fs-5" style="color: #666666;">Free </span>
+                            <span class="fw-light fs-5" style="color: #696969;">Domain</span>
+                        </li>
+                    </ul>
+                </div>
+                <button class="btn text-light w-100 rounded-top py-3 fw-bold fs-5 mb-5"
+                    style="background-color: #07ACA0;">Sign Up
+                    Now</button>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <h2 class="h6 text-light py-3 rounded-top fw-bold my-0" style="background-color: #07ACA0;">
+                    Vps Hosting
+                </h2>
+                <div class="py-4 my-0" style="background-color: #F3F3F3;">
+                    <p style="color: #3E5161;">
+                        <sup class="fs-2 fw-bold">$</sup>
+                        <span class="display-1 fw-bold">12</span>
+                        <span class="d-inline-flex flex-column text-start">
+                            <sup class="fs-2 fw-bold ">.45</sup>
+                            <sub class="h6 fw-bold">/month</sub>
+                        </span>
+                    </p>
+                </div>
+                <div class="bg-light">
+                    <ul class="list-group text-start">
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-check fs-6" style="color: #90CB31;"></i>
+                            <span class="fw-bold fs-5" style="color: #666666;">10GB </span>
+                            <span class="fw-light fs-5" style="color: #696969;">Storage Space </span>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-check fs-6" style="color: #90CB31;"></i>
+                            <span class="fw-bold fs-5" style="color: #666666;">15GB </span>
+                            <span class="fw-light fs-5" style="color: #696969;">Bandwidth </span>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-check fs-6" style="color: #90CB31;"></i>
+                            <span class="fw-bold fs-5" style="color: #666666;">Unlimeited </span>
+                            <span class="fw-light fs-5" style="color: #696969;">FTP &amp; Email </span>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-check fs-6" style="color: #90CB31;"></i>
+                            <span class="fw-bold fs-5" style="color: #666666;">Free </span>
+                            <span class="fw-light fs-5" style="color: #696969;">Domain</span>
+                        </li>
+                    </ul>
+                </div>
+                <button class="btn text-light w-100 rounded-top py-3 fw-bold fs-5 mb-5"
+                    style="background-color: #07ACA0;">Sign Up
+                    Now</button>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <h2 class="h6 text-light py-3 rounded-top fw-bold my-0" style="background-color: #07ACA0;">
+                    Domain Names
+                </h2>
+                <div class="py-4 my-0" style="background-color: #F3F3F3;">
+                    <p style="color: #3E5161;">
+                        <sup class="fs-2 fw-bold">$</sup>
+                        <span class="display-1 fw-bold">14</span>
+                        <span class="d-inline-flex flex-column text-start">
+                            <sup class="fs-2 fw-bold ">.45</sup>
+                            <sub class="h6 fw-bold">/month</sub>
+                        </span>
+                    </p>
+                </div>
+                <div class="bg-light">
+                    <ul class="list-group text-start">
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-check fs-6" style="color: #90CB31;"></i>
+                            <span class="fw-bold fs-5" style="color: #666666;">10GB </span>
+                            <span class="fw-light fs-5" style="color: #696969;">Storage Space </span>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-check fs-6" style="color: #90CB31;"></i>
+                            <span class="fw-bold fs-5" style="color: #666666;">15GB </span>
+                            <span class="fw-light fs-5" style="color: #696969;">Bandwidth </span>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-check fs-6" style="color: #90CB31;"></i>
+                            <span class="fw-bold fs-5" style="color: #666666;">Unlimeited </span>
+                            <span class="fw-light fs-5" style="color: #696969;">FTP &amp; Email </span>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-check fs-6" style="color: #90CB31;"></i>
+                            <span class="fw-bold fs-5" style="color: #666666;">Free </span>
+                            <span class="fw-light fs-5" style="color: #696969;">Domain</span>
+                        </li>
+                    </ul>
+                </div>
+                <button class="btn text-light w-100 rounded-top py-3 fw-bold fs-5 mb-5"
+                    style="background-color: #07ACA0;">Sign Up
+                    Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features of Hosto -->
+    <section class="p-5 text-center">
+        <h2 class="fw-bold display-5" style="color: #3E5161;">
+            <span>Key Features of</span>
+            <span style="color: #27CCC0;">Hosto</span>
+        </h2>
+        <p class="fs-6 mb-5" style="color: #ACACAC;">Our Hosting plans in details. choose the right plan for you!</p>
+
+
+        <div class="row justify-content-center">
+            <div class="col-lg-3 col-md-6 col-sm-12 text-start p-0 rounded border border-dark-subtle mb-5 mt-3 mx-5"
+                style="background-color: #F5F5F5; ">
+                <div class="position-relative">
+                    <h2 class="fw-bold border-bottom border-dark-subtle px-4 py-3">Web Hosting</h2>
+                    <div
+                        class="rounded-circle border border-dark-subtle text-center px-3 m-0 position-absolute top-0 start-100 translate-middle z-1 bg-light">
+                        <p class="m-0 mt-2 fw-bold" style="color: #3E5161;">starting</p>
+                        <p class="m-0 fw-bold text-danger fst-italic">$1.99</p>
+                        <p class="fw-bold" style="color: #3E5161;">/month</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="d-inline">
+                        <p class=" text-wrap fw-normal  px-4 py-3">Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Placeat alias optio tenetur distinctio voluptas molestiae, impedit debitis nesciunt
+                            nihil deserunt adipisci hic beatae accusamus, ipsum quis corrupti error odit nisi?
+                        </p>
+                        <button type="button" class="btn shadow-sm border mx-4 my-3" style="background-color: #F1F1F1;">
+                            Read more
+                        </button>
+                    </div>
+                    <img class="float-end" src="./images/feature1.png" alt="">
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 text-start p-0 rounded border border-dark-subtle mb-5 mt-3 mx-5"
+                style="background-color: #F5F5F5; ">
+
+                <div class="position-relative">
+                    <h2 class="fw-bold border-bottom border-dark-subtle px-4 py-3">E-Commerce</h2>
+                    <div
+                        class="rounded-circle border border-dark-subtle text-center px-3 m-0 position-absolute top-0 start-100 translate-middle z-1 bg-light">
+                        <p class="m-0 mt-2 fw-bold" style="color: #3E5161;">starting</p>
+                        <p class="m-0 fw-bold text-danger fst-italic">$1.99</p>
+                        <p class="fw-bold" style="color: #3E5161;">/month</p>
+                    </div>
+                </div>
+
+                <div>
+
+                    <div class="d-inline">
+                        <p class="fw-normal px-4 py-3">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem delectus nobis optio earum
+                            mollitia voluptatem tempora sequi explicabo ab aperiam similique illo hic ex, commodi
+                            eveniet id quam unde rem?
+                        </p>
+                        <button type="button" class="btn shadow-sm border mx-4 my-3" style="background-color: #F1F1F1;">
+                            Read more
+                        </button>
+                    </div>
+                    <img class="float-end d-inline" src="./images/feature2.png" alt="">
+
+
+                </div>
+
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 text-start p-0 rounded border border-dark-subtle mb-5 mt-3 mx-5"
+                style="background-color: #F5F5F5; ">
+
+                <div class="position-relative">
+                    <h2 class="fw-bold border-bottom border-dark-subtle px-4 py-3">Domains</h2>
+                    <div
+                        class="rounded-circle border border-dark-subtle text-center px-3 m-0 position-absolute top-0 start-100 translate-middle z-1 bg-light">
+                        <p class="m-0 mt-2 fw-bold" style="color: #3E5161;">starting</p>
+                        <p class="m-0 fw-bold text-danger fst-italic">$1.99</p>
+                        <p class="fw-bold" style="color: #3E5161;">/month</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="d-inline">
+                        <p class="fw-normal px-4 py-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Dignissimos
+                            doloribus, fuga rem ipsam ea suscipit adipisci possimus consectetur quasi officia dolor,
+                            ipsa
+                            odit sequi laudantium maxime explicabo dolore magni? Nulla.
+                        </p>
+                        <button type="button" class="btn shadow-sm border mx-4 my-3" style="background-color: #F1F1F1;">
+                            Read more
+                        </button>
+                    </div>
+                    <img class="float-end" src="./images/feature3.png" alt="">
+                </div>
+
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 text-start p-0 rounded border border-dark-subtle mb-5 mt-3 mx-5"
+                style="background-color: #F5F5F5; ">
+
+                <div class="position-relative">
+                    <h2 class="fw-bold border-bottom border-dark-subtle px-4 py-3">My Website</h2>
+                    <div
+                        class="rounded-circle border border-dark-subtle text-center px-3 m-0 position-absolute top-0 start-100 translate-middle z-1 bg-light">
+                        <p class="m-0 mt-2 fw-bold" style="color: #3E5161;">starting</p>
+                        <p class="m-0 fw-bold text-danger fst-italic">$1.99</p>
+                        <p class="fw-bold" style="color: #3E5161;">/month</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="d-inline">
+                        <p class="fw-normal px-4 py-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Officia iste consectetur voluptas maiores commodi inventore, optio accusantium tempora!
+                            Velit
+                            consectetur quisquam voluptatum corporis fugiat perferendis qui atque, id unde fugit.
+                        </p>
+                        <button type="button" class="btn shadow-sm border mx-4 my-3" style="background-color: #F1F1F1;">
+                            Read more
+                        </button>
+                    </div>
+                    <img class="float-end" src="./images/feature4.png" alt="">
+                </div>
+
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 text-start p-0 rounded border border-dark-subtle mb-5 mt-3 mx-5"
+                style="background-color: #F5F5F5; ">
+
+                <div class="position-relative">
+                    <h2 class="fw-bold border-bottom border-dark-subtle px-4 py-3">Servers</h2>
+                    <div
+                        class="rounded-circle border border-dark-subtle text-center px-3 m-0 position-absolute top-0 start-100 translate-middle z-1 bg-light">
+                        <p class="m-0 mt-2 fw-bold" style="color: #3E5161;">starting</p>
+                        <p class="m-0 fw-bold text-danger fst-italic">$1.99</p>
+                        <p class="fw-bold" style="color: #3E5161;">/month</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="d-inline">
+                        <p class="fw-normal px-4 py-3">Lorem ipsum dolor sit, amet consectetur adipisicing
+                            elit. Neque reiciendis soluta molestias vitae ratione ducimus laboriosam tenetur explicabo,
+                            tempore minus atque quaerat minima, fuga assumenda cupiditate maiores quisquam nihil odio!
+                        </p>
+                        <button type="button" class="btn shadow-sm border mx-4 my-3" style="background-color: #F1F1F1;">
+                            Read more
+                        </button>
+                    </div>
+                    <img class="float-end" src="./images/feature5.png" alt="">
+                </div>
+
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 text-start p-0 rounded border border-dark-subtle mb-5 mt-3 mx-5"
+                style="background-color: #F5F5F5; ">
+
+                <div class="position-relative">
+                    <h2 class="fw-bold border-bottom border-dark-subtle px-4 py-3">MyWebsite Personal</h2>
+                    <div
+                        class="rounded-circle border border-dark-subtle text-center px-3 m-0 position-absolute top-0 start-100 translate-middle z-1 bg-light">
+                        <p class="m-0 mt-2 fw-bold" style="color: #3E5161;">starting</p>
+                        <p class="m-0 fw-bold text-danger fst-italic">$1.99</p>
+                        <p class="fw-bold" style="color: #3E5161;">/month</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="d-inline">
+                        <p class="fw-normal px-4 py-3">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore consequatur blanditiis
+                            perferendis ipsam aliquam inventore commodi quos laborum illum quasi asperiores eum odit
+                            dolores rerum voluptate, sed recusandae. Dolorem, fugiat!
+                        </p>
+                        <button type="button" class="btn shadow-sm border mx-4 my-3" style="background-color: #F1F1F1;">
+                            Read more
+                        </button>
+                    </div>
+                    <img class="float-end " src="./images/feature6.png" alt="">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="row images mx-5 mb-5">
+        <div class="col-lg-2 col-md-3 col-sm-6 p-5" style="margin: 0 !important;">
+            <div class="image-container border">
+                <img src="./images/jQuery.png" class="first">
+                <img src="./images/jQueryColerd.png" class="second">
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 col-sm-6 p-5" style="margin: 0 !important;">
+            <div class="image-container border">
+                <img src="./images/java.png" class="first">
+                <img src="./images/javaColerd.png" class="second">
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-6 p-5" style="margin: 0 !important;">
+            <div class="image-container border">
+                <img src="./images/html.png" class="first">
+                <img src="./images/htmlColerd.png" class="second">
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 col-sm-6 p-5" style="margin: 0 !important;">
+            <div class="image-container border">
+                <img src="./images/chorom.png" class="first">
+                <img src="./images/chromeColerd.png" class="second">
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-6 p-5" style="margin: 0 !important;">
+            <div class="image-container border">
+                <img src="./images/cpanel.png" class="first">
+                <img src="./images/cpanelColerd.png" class="second">
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 col-sm-6 p-5" style="margin: 0 !important;">
+            <div class="image-container border">
+                <img src="./images/mysql.png" class="first">
+                <img src="./images/mysqlColerd.png" class="second">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <h5>About Us</h5>
+                    <span class="d-block">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.
+                    </span>
+                    <br>
+                    <ul class="list-group text-start">
+                        <li class="list-group-item mb-3">
+                            <i class="fa-solid fa-house me-2" style="color: #07A7A1;"></i>
+                            <span>
+                                33301 Envato Melbourne, Little Lonsdale St
+                            </span>
+                        </li>
+                        <li class="list-group-item mb-3">
+                            <i class="fa-solid fa-phone me-2" style="color: #07A7A1;"></i>
+                            <span>
+                                +1 234 123 4567
+                            </span>
+                        </li>
+                        <li class="list-group-item mb-3">
+                            <i class="fa-solid fa-envelope me-2" style="color: #07A7A1;"></i>
+                            <a href="" class="text-decoration-underline">
+                                inp@owltempletes.com
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <h5>Navigation</h5>
+                    <ul class="list-group text-start">
+                        <li class="list-group-item ">
+                            <i class="fa-solid fa-arrow-right me-2" style="color: black;"></i>
+                            <a class="text-decoration-none" href="#">
+                                Web Hosting
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-arrow-right me-2" style="color: black;"></i>
+                            <a class="text-decoration-none" href="#">
+                                Reseller Hosting
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-arrow-right me-2" style="color: black;"></i>
+                            <a href="#" class="text-decoration-none">Features</a>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-arrow-right me-2" style="color: black;"></i>
+                            <a href="#" class="text-decoration-none">
+                                VPS Hosting
+
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-arrow-right me-2" style="color: black;"></i>
+                            <a href="#" class="text-decoration-none">Dedicated Servers</a>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-arrow-right me-2" style="color: black;"></i>
+                            <a href="#" class="text-decoration-none">Domain Registration</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <h5>Useful Links</h5>
+                    <ul class="list-group text-start">
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-arrow-right me-2" style="color: black;"></i>
+
+                            <a href="#" class="text-decoration-none">Proin gravida nibh vel</a>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-arrow-right me-2" style="color: black;"></i>
+
+                            <a href="#" class="text-decoration-none">Velt auctor aliquet</a>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-arrow-right me-2" style="color: black;"></i>
+
+                            <a href="#" class="text-decoration-none">Aenean sollicitudin</a>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-arrow-right me-2" style="color: black;"></i>
+
+                            <a href="#" class="text-decoration-none">Lorem quis bibendum</a>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-arrow-right me-2" style="color: black;"></i>
+
+                            <a href="#" class="text-decoration-none">Auctor nisi elit</a>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-arrow-right me-2" style="color: black;"></i>
+
+                            <a href="#" class="text-decoration-none">Lorem ipsum dolor</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <h5>Recent Posts</h5>
+                    <ul class="list-group text-start">
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-arrow-right me-2" style="color: black;"></i>
+                            <a href="#" class="text-decoration-none">Home</a>
+                        </li>
+
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-arrow-right me-2" style="color: black;"></i>
+                            <a href="#" class="text-decoration-none">About</a>
+                        </li>
+
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-arrow-right me-2" style="color: black;"></i>
+                            <a href="#" class="text-decoration-none">Features</a>
+                        </li>
+
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-arrow-right me-2" style="color: black;"></i>
+                            <a href="#" class="text-decoration-none">Blog</a>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-arrow-right me-2" style="color: black;"></i>
+                            <a href="#" class="text-decoration-none">Works</a>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fa-solid fa-arrow-right me-2" style="color: black;"></i>
+                            <a href="#" class="text-decoration-none">Contacts</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <h5>Tags</h5>
+                    <div class="tags">
+                        <span class="badge p-2 fw-normal m-1">Business</span>
+                        <span class="badge p-2 fw-normal m-1">Corporate</span>
+                        <span class="badge p-2 fw-normal m-1">Portfolio</span>
+                        <span class="badge p-2 fw-normal m-1">Work</span>
+                        <span class="badge p-2 fw-normal m-1">Clean</span>
+                        <span class="badge p-2 fw-normal m-1">Template</span>
+                        <span class="badge p-2 fw-normal m-1">Wordpress</span>
+                        <span class="badge p-2 fw-normal m-1">Joomla</span>
+                        <span class="badge p-2 fw-normal m-1">Drupal</span>
+                        <span class="badge p-2 fw-normal m-1">Grow</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="row container-fluid bg-dark m-0">
+        <div class="col text-start text-light px-5 py-3">
+            <span style="color: #BBBCBC;">Hosto © 2012 Privacy Policy</span>
+        </div>
+        <div class="col ms-auto d-inline my-auto">
+            <i class="fa-brands fa-facebook-f me-4" style="color: #07A7A1;"></i>
+            <i class="fa-brands fa-twitter me-4" style="color: #07A7A1;"></i>
+            <i class="fa-brands fa-tumblr me-4" style="color: #07A7A1;"></i>
+            <i class="fa-brands fa-instagram me-4" style="color: #07A7A1;"></i>
+            <i class="fa-brands fa-tiktok me-4" style="color: #07A7A1;"></i>
+            <i class="fa-brands fa-linkedin me-4" style="color: #07A7A1;"></i>
+            <i class="fa-brands fa-facebook-f me-4" style="color: #07A7A1;"></i>
+            <i class="fa-brands fa-twitter me-4" style="color: #07A7A1;"></i>
+            <i class="fa-brands fa-tumblr me-4" style="color: #07A7A1;"></i>
+            <i class="fa-brands fa-instagram me-4" style="color: #07A7A1;"></i>
+            <i class="fa-brands fa-tiktok me-4" style="color: #07A7A1;"></i>
+            <i class="fa-brands fa-linkedin me-4" style="color: #07A7A1;"></i>
+            <i class="fa-brands fa-facebook-f me-4" style="color: #07A7A1;"></i>
+            <i class="fa-brands fa-twitter me-4" style="color: #07A7A1;"></i>
+            <i class="fa-brands fa-tumblr me-4" style="color: #07A7A1;"></i>
+            <i class="fa-brands fa-instagram me-4" style="color: #07A7A1;"></i>
+            <i class="fa-brands fa-tiktok me-4" style="color: #07A7A1;"></i>
+            <i class="fa-brands fa-linkedin me-4" style="color: #07A7A1;"></i>
+        </div>
+    </div>
+</body>
+
+</html>
